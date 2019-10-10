@@ -1,0 +1,38 @@
+<html>
+<head>
+    <style>
+    .cajas{
+        width:25px;
+        height:25px;
+        display: inline-block;
+        background-color: goldenrod;
+        padding: 10px;
+        margin: 10px;
+        border: 2px solid grey;
+    }
+</style>
+</head>
+<body>
+<div id="container">
+
+</div>
+<script>
+var contenedor=document.getElementById("container");
+
+for(var i=0;i<10;i++){
+    var para = document.createElement("div");
+    para.className="cajas";
+    para.innerText=(i+1);
+    contenedor.appendChild(para);
+}
+for(var d of document.getElementsByClassName("cajas")){
+    d.addEventListener("click",function(){
+        mensaje(this.innerText);
+    })
+}
+function mensaje(texto){
+    console.log(texto);
+}
+</script>
+</body>
+</html>

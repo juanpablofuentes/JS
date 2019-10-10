@@ -1,0 +1,29 @@
+<html>
+<head>
+    <style>
+    #boton{
+        position: absolute;
+        width: 25px;
+        height: 25px;
+    }
+    </style>
+</head>
+<body>
+
+<button id="boton">1</button>
+
+<script>
+ var boton=document.getElementById("boton");
+ boton.addEventListener("click",incremento);
+setTimeout(remove,10000);
+ function incremento(){
+     boton.innerText++;
+     boton.style.left=Math.floor(Math.random() * (innerWidth-25))+"px"; 
+     boton.style.top=Math.floor(Math.random() * (innerHeight-25))+"px"; 
+}
+function remove(){
+    boton.removeEventListener("click",incremento);
+}
+</script>
+</body>
+</html>
