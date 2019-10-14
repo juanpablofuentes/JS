@@ -1,0 +1,35 @@
+<button id="start">Empieza</button>
+<button id="stop">Para</button>
+<button onclick="confirm('holi')">trollear</button>
+<p id="res">Holi</p>
+<script>
+let cont=0;
+let timer=0;
+document.getElementById("start").addEventListener("click",start2);
+document.getElementById("stop").addEventListener("click",stop);
+function start(){
+    if (timer===0){
+        timer=setInterval(tic,1000);
+    }
+}
+function start2(){
+    if (timer===0){
+        timer=setTimeout(tic2,1000);
+    }
+}
+function stop(){
+    clearInterval(timer);
+     timer=0;
+}
+function tic(){
+    document.getElementById("res").innerHTML=cont;
+    cont++;
+}
+
+function tic2(){
+    document.getElementById("res").innerHTML=cont;
+    cont++;
+    timer=setTimeout(tic2,1000);
+}
+
+</script>
