@@ -1,0 +1,28 @@
+<script>
+
+function Cuadrado(lado){
+    this.lado=lado;
+    this.area=function(){
+        return this.lado*this.lado;
+    },
+    this.perimetro=function(){
+        return this.lado*4;
+    }
+}
+let a=new Cuadrado(5);
+let b=new Cuadrado(10);
+
+console.log(a.area());
+console.log(b.area());
+
+Array.prototype.min=function(){
+    return Math.min(...this);
+}
+Array.prototype.max=function(){
+    return this.slice(0).sort()[this.length-1];
+}
+let c=[2,4,1,8];
+console.log(c.min());
+console.log(c.max());
+
+</script>

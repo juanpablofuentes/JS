@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container mt-3">
+        <h3>Codificador César</h3>
+        <p>Introduce el texto, el desplazamiento y el programa lo codificará</p>
+
+
+        <div class="input-group mb-3">
+            <textarea id="texto" cols="90"></textarea>
+
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Desplazamiento: </span>
+            </div>
+            <input type="number" id="desp" class="form-control" value="1">
+        </div>
+        <div class="input-group mb-3">
+            <textarea id="res" cols="90"></textarea>
+        </div>
+
+
+    </div>
+    <script>
+        document.getElementById("texto").addEventListener("keyup", procesar);
+        document.getElementById("desp").addEventListener("change", procesar);
+        function procesar() {
+            let desp = parseInt( document.getElementById("desp").value);
+            document.getElementById("res").value = codificar(document.getElementById("texto").value,desp);
+        }
+        function codificar(cadena, desp) {
+            let res = "";
+            desp = (desp + 26) % 26
+            cadena = cadena.toUpperCase();
+          
+            for (let i = 0; i < cadena.length; i++) {
+                let code = cadena.charCodeAt(i);
+                if (code >= 65 && code <= 90) {
+                
+                    res += String.fromCharCode((code - 65 + desp) % 26 + 65);
+                } else {
+                    res += cadena[i];
+                }
+
+            }
+            return res;
+        }
+    </script>
+</body>
+
+</html>
