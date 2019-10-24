@@ -44,12 +44,22 @@
                 nombre: getVal("nombre"),
                 precio: getVal("precio")
             };
-            console.log(prod);
-            setCookie("a", "JSON.stringify(prod)", 30);
+          
             setCookie("producto", JSON.stringify(prod), 30);
+        }
+        function recuperar(){
+            let c=getCookie("producto");
+            if(c!=null){
+                prod=JSON.parse(c);
+                setVal("nombre",prod.nombre);
+                setVal("precio",prod.precio);
+            }
         }
         function getVal(nombre) {
             return document.getElementById(nombre).value;
+        }
+        function setVal(nombre,value) {
+            document.getElementById(nombre).value=value;
         }
         function setCookie(cname, cvalue, exdays) {
             var d = new Date();
