@@ -1,0 +1,81 @@
+<script>
+
+    let a = ["Ana", "Eva", "Pep"];
+
+    //foreach nos permtite recorrer todos los elementos de un array
+    a.forEach((valor, indice, array) => {
+        console.log(valor);
+        console.log(indice);
+        console.log(array);
+    });
+
+    let b = [];
+    a.forEach((valor, indice, array) => {
+        b.unshift(valor);
+    });
+    console.log(b);
+
+    function menu(array) {
+        let lista = "<ul>";
+        array.forEach((valor) => {
+            lista += "<li>" + valor + "</li>";
+        })
+        lista += "</ul>";
+        return lista;
+    }
+    console.log(menu(a));
+
+    //Ejercicio: crear una función a la que le pasemos una cadena y nos devuelva un objeto con el número de vocales existentes.
+    //Ejemplo: vocales("Hola que tal")->{a:2,e:1,o:1}
+
+    let may = a.map((valor, indice, array) => {
+        return valor.toUpperCase();
+    });
+    console.log(may);
+
+    let minmay = a.map((valor, indice, array) => {
+        return indice % 2 == 0 ? valor.toUpperCase() : valor.toLowerCase();
+    });
+    console.log(minmay);
+
+    //Ejercicio: crear una función a la que le pasemos una cadena y nos devuelva una cadena con las palabras en el mismo orden pero invertidas
+    //Ejemplo: invertirPalabras("Hola que tal")->"aloH euq lat"
+
+
+    let conA = a.filter((valor, indice, array) => {
+        return valor.indexOf("a") != -1;
+    })
+    console.log(conA);
+
+    let num = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let impares = num.filter((valor) => valor % 2);
+    console.log(impares);
+
+    //Ejercicio: crear una función que le pasemos una cadena y un tamaño y nos devuelva una cadena eliminando las palabras de longitud menor o igual al tamaño
+    //Ejemplo: limitar("En un lugar de la mancha",2)->"lugar mancha"
+
+    let suma = num.reduce((total, valor, indice, array) => {
+        console.log(indice + "|" + total);
+        return total + valor;
+    });
+
+    console.log(suma);
+
+    let mayor = num.reduce((total, valor, indice, array) => {
+
+        return total < valor ? valor : total;
+    });
+    console.log(mayor);
+
+    //Ejercicio: crear una función que le pasemos una cadena y nos devuelva la palabra más corta y si hay varias más cortas la primera alfabeticamente
+    //Ejemplo cadCorta("en un lugar de la mancha")->"de"
+
+    let todosPares=num.every((valor)=>valor%2==0);
+    console.log(todosPares);
+    let algunPares=num.some((valor)=>valor%2==0);
+    console.log(algunPares);
+
+    let positivos=num.every((valor)=>valor>0);
+    console.log(positivos);
+  
+</script>
