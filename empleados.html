@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        #empleados {
+            display: flex;
+        }
+
+        .card {
+            box-shadow: 10px 10px 5px grey;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <button type="button" class="btn btn-success" id="getUsers">Obtener usuarios</button>
+        <p></p>
+        <div id="empleados"></div>
+
+
+    </div>
+
+    </div>
+    <script>
+        document.getElementById("getUsers").addEventListener("click", getUsers);
+        function getUsers() {
+            let emp = document.getElementById("empleados");
+            emp.innerHTML = "";
+            fetch('https://randomuser.me/api/?results=3')
+                .then(response => response.json())
+                .then(data => createCards(data.results,emp)
+                )
+        }
+        function createCards(datos,destino) {
+            for (let empleado of datos) {
+                destino.innerHTML += createCard(empleado.picture.large,
+                    empleado.name.title + " " + empleado.name.first + " " + empleado.name.last,
+                    "Email: " + empleado.email + "<br/>Teléfono: " + empleado.phone + "<br/>Ciudad: " + empleado.location.city);
+            }
+        }
+        function createCard(img, name, text) {
+            let cad = '<div class="card" style="width:400px"><img class="card-img-top" src="' + img + '" alt="Card image" style="width:100%">';
+            cad += '<div class="card-body"><h4 class="card-title">' + name + '</h4>';
+            cad += '<p class="card-text">' + text + '</p></div></div>';
+            return cad;
+        }
+
+
+    </script>
+</body>
+
+</html>
