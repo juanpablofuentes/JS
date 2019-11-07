@@ -1,0 +1,77 @@
+<script>
+
+
+    fetch('https://deckofcardsapi.com/api/deck/new/shuffle/')
+        .then(
+            function (response) {
+                console.log(response);
+                if (response.status !== 200) {
+                    console.log('Looks like there was a problem. Status Code: ' +
+                        response.status);
+                    return;
+                }
+
+                // Examine the text in the response
+                response.json().then(function (data) {
+                    console.log(data);
+                });
+            }
+        )
+        .catch(function (err) {
+            console.log('Fetch Error :-S', err);
+        });
+
+    fetch('https://deckofcardsapi.com/api/deck/new/shuffle/')
+        .then(
+            function (response) {
+                return response.json()
+
+                // Examine the text in the response
+
+            }
+        ).then(function (data) {
+            console.log(data);
+        })
+        .catch(function (err) {
+            console.log('Fetch Error :-S', err);
+        });
+
+    fetch('https://deckofcardsapi.com/api/deck/new/shuffle/')
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(function (err) {
+            console.log('Fetch Error :-S', err);
+        });
+
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        body: JSON.stringify({
+            title: 'foo',
+            body: 'bar',
+            userId: 1
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+        .then(response => response.json())
+        .then(json => console.log(json))
+
+    let data = {
+        title: 'foo',
+        body: 'bar',
+        userId: 1
+    };
+
+    let params = {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    };
+
+    fetch('https://jsonplaceholder.typicode.com/posts',params)
+        .then(response => response.json())
+        .then(json => console.log(json))
+</script>

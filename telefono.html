@@ -1,0 +1,35 @@
+<script>
+
+    //Consumir la promesa
+
+    let comprar = function (pagaExtra) {
+        let nuevoTelefono = new Promise(
+            function (resolve, reject) {
+                if (pagaExtra) {
+                    var telefono = {
+                        marca: 'Samsung',
+                        color: 'black'
+                    };
+                    resolve(telefono); // fulfilled
+                } else {
+                    var razon = new Error('Sin paga extra');
+                    reject(razon); // reject
+                }
+
+            }
+        );
+        nuevoTelefono.then(
+            //La promesa se ha cumplido
+            function (fulfilled) {
+                console.log(fulfilled);
+            }
+        ).catch(
+            //La promesa no se ha cumplido
+            function (error) {
+                console.log(error);
+            }
+        )
+    }
+    comprar(true);
+    comprar(false);
+</script>

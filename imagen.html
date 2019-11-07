@@ -1,0 +1,23 @@
+<div id="imagen"></div>
+<script>
+  function loadImage(url) {
+    return new Promise((resolve, reject) => {
+      let img = new Image();
+      img.addEventListener('load', e => resolve(img));
+      img.addEventListener('error', () => {
+        reject(new Error(`NO se ha podido cargar: ${url}`));
+      });
+      img.src = url;
+    });
+  }
+
+
+  loadImage('http://trifulcass.com')
+    .then(img => document.getElementById('imagen').appendChild(img))
+    .catch(error => console.error(error));
+
+    loadImage('https://www.hola.com/imagenes/estar-bien/20180925130054/consejos-para-cuidar-a-un-gatito-recien-nacido-cs/0-601-526/cuidardgatito-t.jpg')
+    .then(img => document.getElementById('imagen').appendChild(img))
+    .catch(error => console.error(error));
+</script> 
+

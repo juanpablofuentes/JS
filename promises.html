@@ -1,0 +1,31 @@
+<script>
+
+    let apuestas = new Promise((resolve, reject) => {
+        let total = 0;
+        let veces = 10000;
+        for (let i = 0; i < veces; i++) {
+            for (let j = 0; j < veces; j++) {
+                total += Math.random() * 10;
+            }
+        }
+        console.log(total);
+        total = total / (veces ** 2);
+        if (total >= 5) {
+            let win = 'Hemos ganado';
+            resolve(win);
+        } else {
+            let loose = 'Hemos perdido';
+            reject(loose);
+        }
+    })
+
+    apuestas.then((result)=>{
+        console.log(result);
+    }).catch((error)=>{
+        console.log(error);
+    })
+
+
+
+    console.log("Fin programa");
+</script>

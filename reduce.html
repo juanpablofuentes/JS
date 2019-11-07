@@ -1,0 +1,38 @@
+<script>
+
+    let alumnos = [
+        { nombre: "ana", nota: 8 },
+        { nombre: "eva", nota: 3 },
+        { nombre: "pep", nota: 8 },
+        { nombre: "ot", nota: 5 },
+    ]
+
+    let suma = alumnos.reduce((total, valor) => total + valor.nota, 0);
+    let peor = alumnos.reduce((total, valor) => total.nota > valor.nota ? valor : total);
+
+    console.log(suma);
+    console.log(peor);
+
+    let cad = "hola que tal ana";
+    let corta = cad.split(" ").sort().reduce((total, valor) => total.length < valor.length ? total : valor);
+    console.log(corta);
+
+    function posPalabra(cadena, palabra) {
+        let pos = [];
+        let palabras = cadena.split(" ");
+        let posicion=-1;
+        while(palabras.indexOf(palabra,posicion+1)!=-1){
+            posicion=palabras.indexOf(palabra,posicion+1);
+            pos.push(posicion);
+        }
+        return pos;
+    }
+    function posPalabra2(cadena,palabra){
+        let pos = [];
+        let palabras = cadena.split(" ");
+        palabras.forEach((valor,indice) => {
+            if (valor==palabra){pos.push(indice);}
+        });
+        return pos;
+    }
+</script>
