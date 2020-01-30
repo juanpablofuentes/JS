@@ -8,6 +8,16 @@ function rootReducer(state = initialState, action) {
             articles: state.articles.concat(action.payload)
         });
     }
+    if (action.type === "DELETE_ARTICLE") {
+        return {
+            articles: []
+        };
+    }
+    if (action.type === "DATA_LOADED") {
+        return Object.assign({}, state, {
+            articles: state.articles.concat(action.payload)
+        });
+    }
     return state;
 }
 export default rootReducer;
